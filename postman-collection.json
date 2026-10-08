@@ -1,0 +1,41 @@
+{
+  "info": {
+    "name": "Tienda API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "categoriaId", "value": "3" },
+    { "key": "productoId", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+    },
+    {
+      "name": "Categorias",
+      "item": [
+        { "name": "Listar", "request": { "method": "GET", "url": "{{baseUrl}}/api/categorias" } },
+        { "name": "Crear", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Monitores\"\n}" }, "url": "{{baseUrl}}/api/categorias" } },
+        { "name": "Obtener", "request": { "method": "GET", "url": "{{baseUrl}}/api/categorias/{{categoriaId}}" } },
+        { "name": "Productos de categoria", "request": { "method": "GET", "url": "{{baseUrl}}/api/categorias/{{categoriaId}}/productos" } },
+        { "name": "Actualizar", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Monitores y pantallas\"\n}" }, "url": "{{baseUrl}}/api/categorias/{{categoriaId}}" } },
+        { "name": "Eliminar", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/categorias/{{categoriaId}}" } }
+      ]
+    },
+    {
+      "name": "Productos",
+      "item": [
+        { "name": "Listar", "request": { "method": "GET", "url": "{{baseUrl}}/api/productos" } },
+        { "name": "Buscar Logitech", "request": { "method": "GET", "url": "{{baseUrl}}/api/productos?buscar=logitech" } },
+        { "name": "Filtrar precio", "request": { "method": "GET", "url": "{{baseUrl}}/api/productos?precioMin=1000&precioMax=5000" } },
+        { "name": "Paginacion", "request": { "method": "GET", "url": "{{baseUrl}}/api/productos?page=1&limit=10" } },
+        { "name": "Crear", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Monitor LG 24 pulgadas\",\n  \"caracteristicas\": \"Panel IPS Full HD, 75 Hz, HDMI\",\n  \"precio\": 3499.90,\n  \"stock\": 10,\n  \"url\": \"https://example.com/monitor-lg.jpg\",\n  \"categoriaId\": 3\n}" }, "url": "{{baseUrl}}/api/productos" } },
+        { "name": "Obtener", "request": { "method": "GET", "url": "{{baseUrl}}/api/productos/{{productoId}}" } },
+        { "name": "Actualizar", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Monitor LG 24 pulgadas actualizado\",\n  \"caracteristicas\": \"Panel IPS Full HD, 100 Hz, HDMI\",\n  \"precio\": 3699.90,\n  \"stock\": 12,\n  \"url\": \"https://example.com/monitor-lg.jpg\",\n  \"categoriaId\": 3\n}" }, "url": "{{baseUrl}}/api/productos/{{productoId}}" } },
+        { "name": "Eliminar", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/productos/{{productoId}}" } }
+      ]
+    }
+  ]
+}
